@@ -1,0 +1,465 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Taller Introducción a la Programación en Python\n",
+    "## Bienvenidos a la clase 2\n",
+    "\n",
+    "### Anuncios y temario para hoy\n",
+    "\n",
+    "- Pull de GitHub\n",
+    "- Cuestionario dificultad tarea 1\n",
+    "- Respuestas del cuestionario de los videos\n",
+    "- Algo más de teoría:\n",
+    "    - Funciones: Docstring y variables locales y globales\n",
+    "    - Como abrir y leer y escribir archivos\n",
+    "- Ejercicio práctico: Simulacion de contagios de COVID-19"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 1) Pull de GitHub"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Recuerden que si editaron los archivos originales que había en el repositorio tienen que crear una copia y cambiarle el nombre para no tener conflicto al hacer el pull.\n",
+    "\n",
+    "Abran la consola y repitan los pasos que vimos la clase pasada:\n",
+    "\n",
+    "##### 1. Moverse a la carpeta del repositorio (por ej):\n",
+    "cd Desktop/UNLP/Taller_Python/PythonParaEconomistas/\n",
+    "\n",
+    "##### 2. Deshacer los cambios que puedan haber hecho en el repositorio para evitar conflictos con la versión de GitHub:\n",
+    "git reset --hard\n",
+    "\n",
+    "##### 3. Hacer un pull para traer los últimos cambios de GitHub:\n",
+    "git pull"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2) Cuestionario dificultad tarea 1"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Por favor tomense 2 mins para completar el [este cuestionario](https://docs.google.com/forms/d/e/1FAIpQLSfJykuEfwimJoq-qTphqLuGHAn0qRee3QXDvQyAyzmUDZXnfQ/viewform?usp=pp_url&entry.772857629=paises.extend(pob_m)&entry.1815819264=No&entry.1592301406=%E2%80%99BRA%E2%80%99&entry.1908663093=%7B%E2%80%99cod%E2%80%99,+%E2%80%99pob%E2%80%99,+%E2%80%99gdp%E2%80%99%7D&entry.62492437=for+key+,+val+in++paises_info.items+():%0A++++paises_info%5Bkey%5D%5B%E2%80%99gdp_pc+%E2%80%99%5D+%3D+gdp_per_capita(val%5B%E2%80%99gdp%E2%80%99%5D,+val%5B%E2%80%99pob%E2%80%99%5D)) para saber que tan fácil o difícil les resulto la primer tarea. \n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3) Respuestas cuestionario teoría"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "En [este link](https://docs.google.com/forms/d/e/1FAIpQLSfJykuEfwimJoq-qTphqLuGHAn0qRee3QXDvQyAyzmUDZXnfQ/viewform?usp=pp_url&entry.772857629=paises.extend(pob_m)&entry.1815819264=No&entry.1592301406=%E2%80%99BRA%E2%80%99&entry.1908663093=%7B%E2%80%99cod%E2%80%99,+%E2%80%99pob%E2%80%99,+%E2%80%99gdp%E2%80%99%7D&entry.62492437=for+key+,+val+in++paises_info.items+():%0A++++paises_info%5Bkey%5D%5B%E2%80%99gdp_pc+%E2%80%99%5D+%3D+gdp_per_capita(val%5B%E2%80%99gdp%E2%80%99%5D,+val%5B%E2%80%99pob%E2%80%99%5D)) podrán encontrar las respuestas al cuestionario que acompañaba los videos de esta semana. \n",
+    "\n",
+    "En general las respuestas fueron todas correctas salvo las dos siguientes:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#¿Cual es un posible valor de temp2?\n",
+    "pry_limit = {'URY', 'BOL', 'PRY', 'BRA'}\n",
+    "temp1 = pry_limit.remove('URY')\n",
+    "temp2 = pry_limit.pop() #Como set no tienen orden pop elimina un valor aleatorio\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print(\"Este es el valor de temp1:\", temp1, \"\\nEste es el valor de temp2:\", temp2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#¿Como agregarias la key 'gdp per capita' a cada pais en nuestro diccionario \n",
+    "#paises_info? \n",
+    "\n",
+    "#Tenemos:\n",
+    "paises_info = {'argentina': {'cod': 'ARG', 'pob': 44939, 'gdp':1031215},\n",
+    "              'bolivia': {'cod': 'BOL', 'pob': 11513, 'gdp':104609}, \n",
+    "              'brasil': {'cod': 'BRA', 'pob': 211050 , 'gdp':3220373},\n",
+    "              'chile': {'cod': 'CHL', 'pob': 18952, 'gdp':476738}, \n",
+    "              'paraguay': {'cod': 'PRY', 'pob': 7045, 'gdp':93062},\n",
+    "              'uruguay': {'cod': 'URY', 'pob': 3462, 'gdp':77732}}\n",
+    "\n",
+    "def  gdp_per_capita(gdp , poblacion):\n",
+    "    gdp_pc = round(gdp/poblacion*1000)\n",
+    "    return  gdp_pc\n",
+    "\n",
+    "#Posible solución:\n",
+    "for key , val in  paises_info.items ():\n",
+    "    paises_info[key]['gdp_pc'] = gdp_per_capita(val['gdp'], val['pob'])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "paises_info"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4a) Algunos conceptos más: Funciones"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Variables locales"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#Recuerden que las variables definidas dentro de la función son internas a la \n",
+    "#función y no afectarán sus variables fuera de la función.\n",
+    "\n",
+    "gdp_pc = 22000\n",
+    "\n",
+    "def  gdp_per_capita(gdp , poblacion):\n",
+    "    gdp_pc = round(gdp/poblacion*1000)\n",
+    "    return  gdp_pc\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print(gdp_pc)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "gdp_per_capita(1031215 , 44939)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print(gdp_pc)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "gdp_pc = gdp_per_capita(1031215 , 44939)\n",
+    "print(gdp_pc)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Sin embargo, habra veces en las que ustedes escriban una función especificamente para modificar una variable definida. Piensen si por ejemplo convirtieran el loop que usamos para agregar 'gdp_pc' en el diccionario 'paises_info'. En ese caso el diccionario si saldría modificado de la función. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "paises_info = {'argentina': {'cod': 'ARG', 'pob': 44939, 'gdp':1031215},\n",
+    "              'bolivia': {'cod': 'BOL', 'pob': 11513, 'gdp':104609}, \n",
+    "              'brasil': {'cod': 'BRA', 'pob': 211050 , 'gdp':3220373},\n",
+    "              'chile': {'cod': 'CHL', 'pob': 18952, 'gdp':476738}, \n",
+    "              'paraguay': {'cod': 'PRY', 'pob': 7045, 'gdp':93062},\n",
+    "              'uruguay': {'cod': 'URY', 'pob': 3462, 'gdp':77732}}\n",
+    "\n",
+    "def agrega_gdp_pc(dic_compuesto):\n",
+    "    for key , val in  dic_compuesto.items ():\n",
+    "        dic_compuesto[key]['gdp_pc'] = gdp_per_capita(val['gdp'], val['pob'])\n",
+    "    return dic_compuesto    \n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "agrega_gdp_pc(paises_info)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "paises_info"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Docstrings y documentación"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def  gdp_per_capita(gdp , poblacion):\n",
+    "    '''\n",
+    "    Esta función calcula el pbi per capita\n",
+    "    \n",
+    "    Parameters: (o Input)\n",
+    "        gdp (int): pbi en millones\n",
+    "        poblacion (int): poblaciones en miles\n",
+    "        \n",
+    "    Return: (o Output)\n",
+    "        gdp_pc (int): el pbi per capita calculado\n",
+    "    '''\n",
+    "    gdp_pc = round(gdp/poblacion*1000)\n",
+    "    return  gdp_pc\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# con Shift + Tab van a poder tener el docstring como ayuda al usar la función:\n",
+    "gdp_per_capita() "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4b) Algunos conceptos más: Abrir, Leer y Escribir archivos"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#Para Abrir, Leer, Escribir e incluso crear archivos podemos utilizar el metodo: \n",
+    "open()\n",
+    "#el argumento 'file' puede ser una ruta relativa al archivo (e.g. archivo.txt) \n",
+    "#o absoluta (e.g. C:\\Documentos\\archivo.txt) "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#Si queremos abrir un archivo con el fin de escribir contenido y guardarlo el\n",
+    "#segundo argumento debe ser la \"w\"\n",
+    "f = open(\"archivo_test.txt\", \"w\")\n",
+    "f.write(\"Estas seran las primeras palabras en el archivo\")\n",
+    "f.close()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#Si queremos abrir un archivo solo con el fin de leer el contenido podemos no \n",
+    "#especificar el segundo argumento o podemos usar la \"r\" \n",
+    "f = open(\"archivo_test.txt\") #equivalente: f = open(\"archivo_test.txt\", \"r\") \n",
+    "print(f.read())\n",
+    "f.close()\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#Si quisieramos seguir agregando contenido al archivo, ya no nos sirve la \"w\" \n",
+    "#porque reemplazariamos el contenido anterior. Para preservarlo y agregar nuevo \n",
+    "#contenido al final debemos especificar el segundo argumento con una \"a\" \n",
+    "f = open(\"archivo_test.txt\", \"a\")\n",
+    "f.write(\"\\nEstas palabras se agregaran al final del archivo\") \n",
+    "f.close()\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#Otra forma de leer el contenido de un archivo es con el with:\n",
+    "with open(\"archivo_test.txt\") as f:\n",
+    "    print(f.read())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#Es muy util cuando por ejemplo quiero leer solo una parte del archivo\n",
+    "n_lineas = 3\n",
+    "with open('casos_covid19.csv') as f:\n",
+    "    primeras_lineas = [next(f) for x in range(n_lineas)]\n",
+    "print(primeras_lineas)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 5) Algunos conceptos y paquetes útiles para el proyecto"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#crea un valor aleatorio entre 0 y 1 con distribucion uniforme\n",
+    "import random\n",
+    "\n",
+    "random.random()\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#usar el operador in para chequear pertenencia\n",
+    "if 'argentina' in paises_info.keys():\n",
+    "    print(True)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "mi_set = set(['a', 'b', 'c'])\n",
+    "if 'a' in mi_set:\n",
+    "    print(True)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#Break and Continue\n",
+    "\n",
+    "def sumo_numeros_pares(una_lista, numero_maximo):\n",
+    "\n",
+    "    sumatoria_de_pares = 0\n",
+    "    \n",
+    "    for n in una_lista:\n",
+    "        if n > numero_maximo:\n",
+    "            break\n",
+    "\n",
+    "        elif n%2: #Chequeo si es inpar   \n",
+    "            continue\n",
+    "            \n",
+    "        else:\n",
+    "            sumatoria_de_pares += n \n",
+    "\n",
+    "    return sumatoria_de_pares"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "\n",
+    "mi_lista = [1,2,3,4,5,6,7,8]\n",
+    "\n",
+    "sumo_numeros_pares(mi_lista, 10)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.6"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
