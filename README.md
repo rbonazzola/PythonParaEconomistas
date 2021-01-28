@@ -3,7 +3,7 @@ Este repositorio será utilizado para compartir el código que se usará en las 
 
 Para todo el resto del material del curso pueden consultar los siguientes links:
 
-Clase 0:
+**Clase 0:**
 
 [Video de presentación](https://www.youtube.com/watch?v=fcLdsjwtUwk&feature=youtu.be&ab_channel=Bel%C3%A9nMichelTorino)
 
